@@ -1,0 +1,53 @@
+
+<body class="d-flex h-100 text-center text-white bg-dark" >
+ 
+  
+  
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-height: 100vh; background-image: url('assets/image5.jpg'); background-size: cover; background-position: center;">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0" style="color:rgba(2, 32, 12, 0.822); font-family:lato; font-size:20px; font-weight:bold;">Fatima's             &nbsp; &nbsp; &nbsp; &nbsp;</h3> 
+       <h3 class="float-md-start mb-0" style="color:rgba(255, 255, 255, 0.822); font-family:lato; font-size:20px; ">Hello {{user?.displayName}} !</h3>
+        <nav class="nav nav-masthead justify-content-center float-md-end">
+          <a style="color:white;  font-family:Lato;" class="nav-link active" aria-current="page" href="#">Home</a>
+          <a  style="color:white;  font-family:Lato;"  routerLink="/products"  class="nav-link" >Products</a>
+          <a style="color:white;  font-family:Lato;"  routerLink="/cart"  class="nav-link" href="#">Cart</a>
+          <a style="color:white;  font-family:Lato;"  routerLink="/login"  class="nav-link" href="#" *ngIf="!user">Login</a>
+          <button (click)="onClick()" class=" button" type="button" aria-controls="drawer" routerLink="/logout" *ngIf="user">
+            Logout
+          </button>
+
+          
+        </nav>
+      </div>
+    </header>
+
+  
+      
+      <h1 style="color:white;  font-family:Lato; font-weight:bold; font-size: 80px; ">Fatima's Fresh</h1>
+      <br>
+      
+      <p style="color:white; font-weight:bold; " class="lead">Shop all your cravings right here!</p>
+      
+      <br>
+      <br>
+      <br>
+      <p class="lead">
+        <a routerLink="/manage-products" class=" button" style="color:white; text-decoration: none; font-family:Lato;" >Shop here</a>
+      </p>       
+
+
+    <footer class="mt-auto text-white-50">
+      <p>Visit fatima at  <a href="https://github.com/faticoco" class="text-white">Github</a></p>
+    </footer>
+  </div>
+  
+
+  <br> <br>
+
+ 
+  
+</body>
+
+
+
