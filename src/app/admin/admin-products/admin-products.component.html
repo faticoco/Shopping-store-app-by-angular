@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<body class="d-flex h-100 text-center text-white bg-dark" >
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-height: 100vh; background-image: url(''); background-size: cover;  background-color:white;background-position: center;">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">Shopping Store</h3>
+          <nav class="nav nav-masthead  float-md-end">
+            <a style="color:rgb(10, 10, 16);  font-family:Lato; font-weight:bold" class="nav-link active" aria-current="page" href="#">Home</a>
+            <a  style="color:rgb(9, 9, 16);  font-family:Lato; font-weight:bold"  routerLink="/products"  class="nav-link" >Products</a>
+            <a style="color:rgb(1, 1, 1); font-family:Lato; font-weight:bold"  routerLink="/cart"  class="nav-link" href="#">Cart</a>
+            <a style="color:rgb(0, 0, 1);  font-family:Lato; font-weight:bold"  routerLink="/login"  class="nav-link" href="#">Login</a>
+           
+          </nav>
+        </div>
+      </header>
+  
+     
+      <h1 style="color:rgb(6, 6, 7); font-family:Lato; font-weight:bold; font-size: 70px; text-align: center;">Manage Products</h1>
+      
+     
+<div class="container">
+   
+   <p>
+    <a [routerLink]="'/admin/products/new'" class="button btn btn-primary">New Product</a>
+    </p>
+   &nbsp; &nbsp; &nbsp;
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Price</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let product of products | async">
+          <td>{{ product.title }}</td>
+          <td>{{ product.price }}</td>
+          <td><a [routerLink]="['/admin/products/' , product.title]">Edit</a></td>
+        </tr>
+      </tbody>
+    </table>
+    
+
+  </div>
+  
+
+
+
+  
+  
+  
+      <footer class="mt-auto text-white-50">
+        <p>Visit fatima at  <a href="https://github.com/faticoco" class="text-white">Github</a></p>
+      </footer>
+    </div>
+  </body>
+  
+
+

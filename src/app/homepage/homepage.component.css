@@ -1,0 +1,22 @@
+.nav-link {
+    font-size: 1.125rem;
+    color: aliceblue;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+
+  }
+
+.button {
+  /* Button styles */
+  padding: 10px 20px;
+  background-color: #03050700;
+  color: #fff;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  
+}
+
+.button:hover {
+  /* Hover effect styles */
+  background-color: #0fc59b56;
+  border: 2px solid #ffffff;
+}

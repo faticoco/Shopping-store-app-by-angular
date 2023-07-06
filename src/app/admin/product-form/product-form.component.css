@@ -1,0 +1,64 @@
+/* Style for form inputs */
+.form-group {
+    margin-bottom: 15px;
+  }
+  
+  label {
+    color: #fefefeea;
+    display: block;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: left;
+  }
+
+  select {
+    width: 70%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style for form buttons */
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #4d62c0d9;
+    color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    align-content: end;
+    width: 100px;
+  }
+  
+  button:hover {
+    background-color: #162a8f;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+
+  .input-container {
+    background-color: transparent;
+    width: 500px; /* Adjust the width to your preference */
+    margin-bottom: 20px;
+  }
+  
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .form-container {
+    border: 1px solid #4930d9;
+    background-color: #2075caa0;
+    padding: 20px;
+    width: 600px;
+    margin: 0 auto; /* Add this line to center the container */
+  }
+  
