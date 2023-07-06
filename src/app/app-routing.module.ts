@@ -34,7 +34,7 @@ const routes: Routes = [
   { path: 'admin/orders', component: AdminOrdersComponent , canActivate:[AuthGuardService , AdminAuthGuardService] },
   { path: 'admin/products', component: AdminProductsComponent , canActivate:[AuthGuardService ,AdminAuthGuardService] },
   { path: 'admin/products/new', component: ProductFormComponent , canActivate:[AuthGuardService ,AdminAuthGuardService] },
-  { path: 'admin/products/:id', component: ProductFormComponent , canActivate:[AuthGuardService ,AdminAuthGuardService] },
+  { path: 'admin/products/:title', component: ProductFormComponent , canActivate:[AuthGuardService ,AdminAuthGuardService] },
   { path:'manage-products', component: ManageProductsComponent }
 
 

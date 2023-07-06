@@ -8,7 +8,7 @@ import { ProductService } from 'src/app/product.service';
   styleUrls: ['./admin-products.component.css']
 })
 export class AdminProductsComponent {
-  products: Observable<any>;
+  products:any;
   constructor(private prodservice : ProductService)
   {
     this.products= this.prodservice.getall();

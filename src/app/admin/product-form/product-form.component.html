@@ -25,7 +25,7 @@
     <div class="form-group">
       <label for="title">Title</label>
       <div class="input-container">
-        <input  #title="ngModel" ngModel name="title" id="title" type="text" class="form-control" required>
+        <input  #title="ngModel" [(ngModel)]="product.title" name="title" id="title" type="text" class="form-control" required>
         <div class="alert alert-danger" *ngIf="title.touched && title.invalid">
               Title is required
         </div>
@@ -40,7 +40,7 @@
 
       <div class="input-group  input-container ">
         <span class="input-group-text">$</span>
-        <input  #price="ngModel" ngModel name="price" id="price" type="number" class="form-control" [min]="0"  required>
+        <input  #price="ngModel" [(ngModel)]="product.price" name="price" id="price" type="number" class="form-control" [min]="0"  required>
         </div>
         <div class="alert alert-danger" *ngIf="price.touched && price.invalid">
           Price is required
@@ -53,7 +53,7 @@
     <div class="form-group">
       <label for="category">Category</label>
       <div class="input-container">
-      <select #category="ngModel" ngModel name="category" id="category" class="form-control" required>
+      <select #category="ngModel" [(ngModel)]="product.category" name="category" id="category" class="form-control" required>
         <option value="">
           
         </option>
@@ -75,7 +75,7 @@
       <div class="input-container">
         <input
           #imageUrl="ngModel"
-          ngModel
+          [(ngModel)]="product.imageUrl"
           name="imageUrl"
           id="imageUrl"
           type="text"
@@ -96,10 +96,10 @@
   </div>
 
   <div class="card" style="width: 35rem;">
-    <img [src]="imageUrl.value" class="card-img-top">
+    <img [src]="product.imageUrl" class="card-img-top">
     <div class="card-body">
-      <h3 class="card-title" style="color:rgb(40, 30, 149); font-family:Lato; font-weight:bold; font-size: 30px;">{{title.value}}</h3>
-      <p class="card-text">{{price.value |currency:'USD':true}}</p>
+      <h3 class="card-title" style="color:rgb(40, 30, 149); font-family:Lato; font-weight:bold; font-size: 30px;">{{product.title}}</h3>
+      <p class="card-text">{{product.price |currency:'USD':true}}</p>
      
     </div>
   </div>
