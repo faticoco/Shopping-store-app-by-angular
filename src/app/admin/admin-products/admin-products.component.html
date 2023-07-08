@@ -17,10 +17,15 @@
   
      
       <h1 style="color:rgb(6, 6, 7); font-family:Lato; font-weight:bold; font-size: 70px; text-align: center;">Manage Products</h1>
-      
-     
+      <br>
+      <br>
+      <p >
+        <input #query (keyup)="filter(query.value)" type="text" class="form-control" placeholder="Search Product">
+      </p>
+    
 <div class="container">
    
+  
    <p>
     <a [routerLink]="'/admin/products/new'" class="button btn btn-primary">New Product</a>
     </p>
@@ -33,7 +38,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let product of products | async">
+        <tr *ngFor="let product of filteredproducts ">
           <td>{{ product.title }}</td>
           <td>{{ product.price }}</td>
           <td><a [routerLink]="['/admin/products/' , product.title]">Edit</a></td>

@@ -3,7 +3,7 @@ import { Observable } from 'rxjs';
 import { CategoryService } from 'src/app/category.service';
 import { ProductService } from 'src/app/product.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { first } from 'rxjs/operators';
 
 @Component({
@@ -13,13 +13,16 @@ import { first } from 'rxjs/operators';
 })
 export class ProductFormComponent {
   form: FormGroup;
+  title: any;
+
   categories$: Observable<any[]>;
-  product:any;
-  constructor(private cat: CategoryService , private prod : ProductService , private fb: FormBuilder , private route : ActivatedRoute) {
-    
-    let title = this.route.snapshot.paramMap.get('title');
-    if (title) {
-      this.prod.getByTitle(title).pipe(first()).subscribe((data) => {
+  product:any={};
+
+  constructor(private cat: CategoryService , private prod : ProductService , private fb: FormBuilder , private route : ActivatedRoute ,   private router : Router) {
+    this.title = this.route.snapshot.paramMap.get('title');
+    console.log(this.title);
+    if (this.title) {
+      this.prod.getByTitle(this.title).pipe(first()).subscribe((data) => {
         this.product = data;
         console.log(this.product);
       });
@@ -36,7 +39,26 @@ export class ProductFormComponent {
 
   save(product:any)
   {
-    this.prod.create(product);
-    console.log(product);
+  
+         if(this.title){
+          this.prod.update(product , this.title);
+        }
+        else
+        {
+          this.prod.create(product);
+        }
+    this.router.navigate(['/admin/products'])
+   
   }
+
+  delete()
+  {
+   
+    if(confirm('Are you sure you want to delete this product?'))
+    {
+      this.prod.deleteByTitle(this.title);
+    }
+    this.router.navigate(['/admin/products'])
+  }
+
 }
