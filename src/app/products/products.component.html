@@ -1,29 +1,93 @@
-<body class="d-flex h-100 text-center text-white bg-dark" >
-    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-height: 100vh; background-image: url('assets/image6.png'); background-size: cover; background-position: center;">
-      <header class="mb-auto">
-        <div>
-          <h3 class="float-md-start mb-0">Shopping Store</h3>
-          <nav class="nav nav-masthead  float-md-end">
-            <a style="color:white;  font-family:Lato;" class="nav-link active" aria-current="page" href="#">Home</a>
-            <a  style="color:white;  font-family:Lato;"  routerLink="/products"  class="nav-link" >Products</a>
-            <a style="color:white;  font-family:Lato;"  routerLink="/cart"  class="nav-link" href="#">Cart</a>
-            <a style="color:white;  font-family:Lato;"  routerLink="/login"  class="nav-link" href="#">Login</a>
+
+
+
+
+
+
+
+<body class="d-flex h-100 text-center text-white bg-dark">
+  <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-height: 100vh; background-image: url('assets/image6.png'); background-size: cover; background-position: center; overflow: hidden;">
+    <header class="mb-auto">
+      <div>
+        <h3 class="float-md-start mb-0">Shopping Store</h3>
+        <nav class="nav nav-masthead float-md-end">
+          <a style="color:white; font-family:Lato;" class="nav-link active" aria-current="page" href="#">Home</a>
+          <a style="color:white; font-family:Lato;" routerLink="/products" class="nav-link">Products</a>
+          <a style="color:white; font-family:Lato;" routerLink="/cart" class="nav-link" href="#">Cart</a>
+          <a style="color:white; font-family:Lato;" routerLink="/login" class="nav-link" href="#">Login</a>
+        </nav>
+      </div>
+    </header>
+
+
+    <h1 style="color:rgb(255, 255, 255); font-family:Lato; font-weight:bold; font-size: 70px; text-align: center;">Products</h1>
+     
+
+
+    <div style="display: flex; ">
+    <br>
+    <br>
+      <div class="cart-container" style="height: 500px; overflow: auto; display: flex; flex-wrap: wrap;">
+ 
+        <div *ngFor="let p of FilteredProducts" class="card" style="width: 15rem; flex: 0 0 calc(33.33% - 10px); margin: 5px;">
+          <img [src]="p.imageUrl" class="card-img-top">
+          <div class="card-body">
+            <h3 class="card-title" style=" font-family:Lato; font-weight:bold; font-size: 30px;">{{p.title}}</h3>
+            <p class="card-text">{{p.price |currency:'USD':true}}</p>
+            <p class="card-text">cart items: {{getQuantity(p)}}</p>
+            <div class="card-footer">
+            <a (click)="AddToCart(p)" class="cart-button btn  btn-block">Add to Cart</a>
            
-          </nav>
+            </div>
+           </div>
         </div>
-      </header>
-  
-      <h1 style="color:white; font-family:Lato; font-weight:bold; font-size: 80px; text-align: center;">Products</h1>
-      
-      <div class="cart-container">
-          <!-- Cart items content -->
-        </div>
-  
-  
-  
-      <footer class="mt-auto text-white-50">
-        <p>Visit fatima at  <a href="https://github.com/faticoco" class="text-white">Github</a></p>
-      </footer>
     </div>
-  </body>
-  
+
+
+
+      <div style="width: 300px; margin-left: 20px;">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Categories</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr >
+              <td>
+                <button class=" catsbutton"  routerLink="/products">
+                 All categories
+                </button>
+              </td>
+            </tr>
+
+            <tr *ngFor="let c of categories | async">
+              <td>
+                <button class=" catsbutton"  routerLink="/products"
+                [queryParams]="{category:c.name}"
+                [class.active]="category === c.name">
+                  {{ c.name }}
+                </button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div> 
+    </div> 
+
+
+    <footer class="mt-auto text-white-50">
+      <p>Visit fatima at  <a href="https://github.com/faticoco" class="text-white">Github</a></p>
+    </footer>
+  </div>
+
+ 
+
+</body>
+
+
+
+
+
+
+

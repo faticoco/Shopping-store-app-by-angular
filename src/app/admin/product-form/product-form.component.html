@@ -83,19 +83,20 @@
         >
       </div>
 
-      <div class="alert alert-danger" *ngIf="imageUrl.touched || imageUrl.hasError('pattern')">
+      <div class="alert alert-danger" *ngIf="imageUrl.touched ">
         Please enter a valid URL for the image
       </div>
     </div>
     
   
     <button class="btn btn-primary">Save</button>
-    <button type="button" (click)="delete()" class="btn  btn-primary">Delete</button>
+    &nbsp;  &nbsp;
+    <button type="button" (click)="delete()" class="btn  btn-danger">Delete</button>
   </form>
   
   </div>
 
-  <div class="card" style="width: 35rem;">
+  <div class="card" *ngIf="product.title" style="width: 35rem;">
     <img [src]="product.imageUrl" class="card-img-top">
     <div class="card-body">
       <h3 class="card-title" style="color:rgb(40, 30, 149); font-family:Lato; font-weight:bold; font-size: 30px;">{{product.title}}</h3>

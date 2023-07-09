@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import 'firebase/compat/auth';
 import { AuthServiceService } from '../auth-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-form',
@@ -12,14 +13,15 @@ import { AuthServiceService } from '../auth-service.service';
 export class LoginFormComponent {
         login_msg!: string;
         logged_success: boolean = false;
-        constructor(public Auth: AuthServiceService )
+        constructor(public Auth: AuthServiceService  )
         {
-
+            
         }
         
         login()
         {  
           this.Auth.login();
+         
 
         }
 }

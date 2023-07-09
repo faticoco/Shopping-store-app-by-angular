@@ -18,7 +18,7 @@ import { AdminAuthGuardService } from './admin-auth-guard.service';
 import { ProductFormComponent } from './admin/product-form/product-form.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/homepage', pathMatch: 'full' },
+  { path: '', component: HomepageComponent},
   { path: 'homepage', component: HomepageComponent },
   { path: 'login', component: LoginFormComponent },
   { path: 'signup', component: SignupFormComponent },
