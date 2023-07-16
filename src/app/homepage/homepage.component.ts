@@ -10,7 +10,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./homepage.component.css']
 })
 export class HomepageComponent {
+  showDashboard: boolean = false;
   user: firebase.User | null;
+
+  
   constructor(private afAuth: AngularFireAuth, private userservice: UserService ) {
     this.user = null; // Initialize the user property to null
     afAuth.authState.subscribe(user => {
@@ -22,6 +25,10 @@ export class HomepageComponent {
    //for tesing users name
     afAuth.authState.subscribe(x => console.log(x?.displayName));
     
+  }
+
+  toggleDashboard() {
+    this.showDashboard = !this.showDashboard;
   }
 
    

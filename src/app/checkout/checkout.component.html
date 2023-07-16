@@ -4,21 +4,109 @@
         <div>
           <h3 class="float-md-start mb-0">Shopping Store</h3>
           <nav class="nav nav-masthead  float-md-end">
-            <a style="color:rgb(255, 230, 8);  font-weight:bold;  font-family:Lato;" class="nav-link active" aria-current="page" href="#">Home</a>
-            <a  style="color:rgb(255, 230, 8); font-weight:bold;   font-family:Lato;"  routerLink="/products"  class="nav-link" >Products</a>
-            <a style="color:rgb(255, 230, 8);   font-family:Lato; font-weight:bold;"  routerLink="/cart"  class="nav-link" href="#">Cart</a>
-            <a style="color:rgb(255, 230, 8);   font-family:Lato; font-weight:bold;"  routerLink="/login"  class="nav-link" href="#">Login</a>
-           
+            <a style="color:rgb(0, 0, 0);  font-weight:bold;  font-family:Lato;" class="nav-link active" aria-current="page" href="#">Home</a>
+            <a  style="color:rgb(0, 0, 0); font-weight:bold;   font-family:Lato;"  routerLink="/products"  class="nav-link" >Products</a>
+            <a style="color:rgb(5, 5, 4);   font-family:Lato; font-weight:bold;"  routerLink="/cart"  class="nav-link" href="#">Cart</a>
+            <a style="color:rgb(15, 15, 14);   font-family:Lato; font-weight:bold;"  routerLink="/login"  class="nav-link" href="#">Login</a>         
           </nav>
         </div>
       </header>
   
       <h1 style="color:rgb(223, 223, 10); font-family:Lato; font-weight:bold; font-size: 80px; text-align: center;">Check Out</h1>
       
-      <div class="cart-container float-md-center">
-          <!-- Cart items content -->
+
+
+<div class="main-container">
+  <div class="cart-container">
+
+    <div class="form-container">
+          
+      <form #f="ngForm" (ngSubmit)="placeOrder(f.value)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <div class="input-container">
+            <input  #name ngModel name="name" id="name" type="text" class="form-control" required>
+            <!-- <div class="alert alert-danger" *ngIf="name.touched && name.invalid">
+                  Name is required
+            </div> -->
+          </div>
         </div>
-  
+
+
+
+        
+        <div class="form-group">
+          <label for="Address">Address</label>
+
+          <div class="input-group  input-container ">
+            <input  #Address ngModel name="Address" id="Address" type="text" class="form-control" required>
+            </div>
+            <!-- <div class="alert alert-danger" *ngIf="Address.touched && Address.invalid">
+              Address is required
+            </div>
+            <div class="alert alert-danger" *ngIf="Address.errors?.['min']">
+              Address should be zero or higher
+            </div> -->
+          </div>
+
+
+
+        <div class="form-group">
+          <label for="Address2">Address 2</label>
+          <div class="input-container">
+            <input
+              #Address2 ngModel
+              name="Address2"
+              id="Address2"
+              type="text"
+              class="form-control"
+              required
+            >
+          </div>
+        </div>
+        
+
+        
+        <div class="form-group">
+          <label for="City">City</label>
+          <div class="input-container">
+            <input
+              #City ngModel
+              name="City"
+              id="City"
+              type="text"
+              class="form-control"
+              required
+            >
+          </div>
+        </div>
+        
+
+
+      <br>
+      <br>
+        <button class="button">Place Order</button>
+
+      </form>
+
+      </div>
+
+  </div>
+
+  <div class="card-container">
+    <h1 style="color:rgb(23, 23, 19); font-family:Lato; font-weight:bold; font-size: 20px; text-align: center;">Order Summary</h1>
+      <ul class="list-group">
+        <li *ngFor="let item of cartItems" class="list-group-item">
+             {{item.quantity}} x {{item.key}} 
+                <div class="float-right">
+                    {{item.priceTotal| currency:'USD':true}}
+                </div>
+        </li>
+      </ul>
+  </div>
+</div>
+
+
   
   
       <footer class="mt-auto text-black-50">

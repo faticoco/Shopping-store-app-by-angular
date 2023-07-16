@@ -1,0 +1,51 @@
+.cart-container {
+    background-color: rgba(255, 255, 255, 0.167);
+    border: 5px solid #f4f4f4;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 20px;
+    width: 100%;
+    height: 100%;
+    margin-left: 0;
+    margin-right: auto;
+    overflow: auto;
+  }
+  
+
+
+  /* Style for form buttons */
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #0c8661a9;
+    color: #fff;
+    border: 1px solid #ffffff;
+   
+  }
+  
+ 
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table td {
+    border: 1px solid #ddd;
+    background-color: #f2f2f285;
+    padding: 8px;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+
+  
+  .table tbody tr:hover {
+    background-color: #11683e85;
+  }
+  
+  .table tfoot td {
+    font-weight: bold;
+  }
+  

@@ -9,7 +9,8 @@
   <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column" style="min-height: 100vh; background-image: url('assets/image6.png'); background-size: cover; background-position: center; overflow: hidden;">
     <header class="mb-auto">
       <div>
-        <h3 class="float-md-start mb-0">Shopping Store</h3>
+        <h3 class="float-md-start mb-0">Shopping Store  &nbsp;&nbsp;&nbsp;  Cart Items : {{cartCount}} </h3>
+       
         <nav class="nav nav-masthead float-md-end">
           <a style="color:white; font-family:Lato;" class="nav-link active" aria-current="page" href="#">Home</a>
           <a style="color:white; font-family:Lato;" routerLink="/products" class="nav-link">Products</a>
@@ -34,10 +35,14 @@
           <div class="card-body">
             <h3 class="card-title" style=" font-family:Lato; font-weight:bold; font-size: 30px;">{{p.title}}</h3>
             <p class="card-text">{{p.price |currency:'USD':true}}</p>
-            <p class="card-text">cart items: {{getQuantity(p)}}</p>
             <div class="card-footer">
-            <a (click)="AddToCart(p)" class="cart-button btn  btn-block">Add to Cart</a>
-           
+            <a (click)="AddToCart(p)" class="cart-button btn  btn-block">+</a>
+            &nbsp;
+            &nbsp;
+            <a (click)="AddToCart(p)" class="cart-button btn  btn-block">Add  to Cart</a>
+            &nbsp;
+            &nbsp;
+            <a (click)="RemovefromCart(p)" class="cart-button btn  btn-block">-</a>
             </div>
            </div>
         </div>

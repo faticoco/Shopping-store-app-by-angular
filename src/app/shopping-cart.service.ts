@@ -1,16 +1,19 @@
-import { first } from 'rxjs/operators';
+import { first, map } from 'rxjs/operators';
 import { Injectable } from '@angular/core';
 import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { Product } from './models/product';
 import { pipe } from 'rxjs';
 import { take } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShoppingCartService {
 
-  constructor(private db: AngularFireDatabase) { }
+  constructor(private db: AngularFireDatabase ,) { 
+  
+  }
 
 
   private create()
@@ -20,14 +23,11 @@ export class ShoppingCartService {
     })
   }
 
-  async getcart()
-  {
-    let cartid = await this.getOrCreateCartid();
-      return this.db.object('/shoppingcart/' + cartid);
-  }
+
 
   async getOrCreateCartid() :Promise<string>
   {
+  
     let cartId= localStorage.getItem('cartId');
           if(cartId)
           {
@@ -39,6 +39,26 @@ export class ShoppingCartService {
               return result.key;       
   }
 
+
+  async RemoveFromCart(p: Product) {
+    console.log('Deleting');
+    const cartId = await this.getOrCreateCartid();
+    console.log('Removing ' + cartId);
+    const itemsRef = this.db.object(`/shoppingcart/${cartId}/items`);
+    itemsRef.valueChanges().pipe(take(1)).subscribe((items: any) => {
+      if (items && items[p.title]) {
+        if (items[p.title].quantity > 1) {
+          console.log('Deleting item');
+          itemsRef.update({ [p.title]: { ...items[p.title], quantity: items[p.title].quantity - 1 } });
+        } else {
+          console.log('Permanently removing item');
+          itemsRef.update({ [p.title]: null });
+        }
+      }
+    });
+  }
+  
+  
   async AddToCart(p: Product) {
     console.log('Adding');
     const cartId = await this.getOrCreateCartid();
@@ -52,6 +72,13 @@ export class ShoppingCartService {
         itemsRef.update({ [p.title]: { product: p, quantity: 1 } });
       }
     });
+  }
+
+
+  async ClearCart() {
+    console.log('Clearing Cart');
+    const cartId = await this.getOrCreateCartid();
+    this.db.object(`/shoppingcart/${cartId}/items`).remove();
   }
   
 

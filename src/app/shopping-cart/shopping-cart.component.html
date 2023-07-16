@@ -16,12 +16,43 @@
   
       <br>
       <h1 style="color:white; font-family:Lato; font-weight:bold; font-size: 80px; text-align: center;">Cart</h1>
+      <h3>There are {{cartCount}} items in your cart</h3>
+      <div class="cart-container">
       
-    <div class="cart-container">
-        <!-- Cart items content -->
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Title</th>
+              <th>Quantity</th>
+              <th>Price</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let cartItem of cartItems " >
+              <td *ngIf="cartItem.quantity !=0">{{ cartItem.key }}</td>
+              <td *ngIf="cartItem.quantity !=0"> 
+                <button class="button" (click)="RemovefromCart(cartItem.product)">-</button>
+                          &nbsp;&nbsp;
+                          {{ cartItem.quantity }}
+                          &nbsp;&nbsp;  
+                 <button class="button" (click)="AddToCart(cartItem.product)">+</button>
+              </td>
+              <td *ngIf="cartItem.quantity !=0">{{ cartItem.priceTotal |currency:'USD':true }}</td>
+            </tr>
+            <tr >
+              <th></th>
+              <th></th>
+             
+              <th> {{totalBill |currency:'USD':true }}</th>
+            </tr>
+          
+          </tbody>
+        </table>
+        <button class="button alert-danger" (click)="clearCart()">Clear Cart</button>
       </div>
 
-
+    
+    <button *ngIf="this.cartCount" routerLink="/checkout" class="button " >Check Out</button>
 
       <footer class="mt-auto text-white-50">
         <p>Visit fatima at  <a href="https://github.com/faticoco" class="text-white">Github</a></p>

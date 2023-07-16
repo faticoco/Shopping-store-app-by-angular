@@ -43,7 +43,7 @@
 
   .card-footer
   {
-    background-color: #0f573af7;
+    background-color: #fffffff7;
     padding: 0;
   }
 
@@ -55,3 +55,8 @@
       color: #ffffff;
     
     }
+
+    .cart-button:hover {
+      background-color: #30c185;
+    }
+    

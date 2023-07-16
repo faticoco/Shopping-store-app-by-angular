@@ -20,3 +20,44 @@
   background-color: #0fc59b56;
   border: 2px solid #ffffff;
 }
+
+
+
+
+.dashboard {
+  position: fixed;
+  top: 0;
+  left: -250px;
+  width: 250px;
+  height: 100vh;
+  background-color: #004e34;
+  transition: left 0.3s ease-in-out;
+}
+
+.dashboard.active {
+  left: 0;
+}
+
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 30px;
+  height: 30px;
+  background-color: #ccc;
+  border: none;
+  font-size: 20px;
+  color: #065533;
+}
+
+.menu-button {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff83;
+  border: 10px;
+  font-size: 30px;
+  color: #013d31;
+}

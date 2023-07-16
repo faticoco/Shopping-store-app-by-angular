@@ -4,10 +4,79 @@
     padding: 20px;
     margin: 20px 0;
     border-radius: 20px;
+    margin: 20px; 
+    height: 90%;
    
-    height: 100%;
-    margin-left: 50px;
-    margin-right: 50px;
-    
+    flex-basis: 50%; 
+  }
+  
+  .main-container {
+    display: flex;
+  }
+  
+  
+  .card-container {
+    background-color: rgb(255, 255, 255);
+    border: 5px solid #fff200;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 20px;
+   
+    height: 50%;
+    margin: 20px; /* Adjust the margin as per your requirements */
+    flex-basis: 50%; /* Set the width of each container to 50% */
+  }
+  
+  .input-container {
+    background-color: transparent;
+    width: 450px; /* Adjust the width to your preference */
+    margin-bottom: 20px;
+  }
+  
+  
+  /* Style for form buttons */
+  button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #ffffb3;
+    color: #000000;
+    border: 1px solid #f7ff5c;
+    border-radius: 4px;
+    cursor: pointer;
+    align-content: end;
+    font-weight: bold;
+    width: 200px;
+  }
+  
+  button:hover {
+    background-color: #fbf476de;
+  }
+  
+  button:focus {
+    outline: none;
+  }
+  
+
+  label {
+    color: #100f0fea;
+    display: block;
+    font-size: 20px;
+    text-align: left;
+  }
+
+
+  .form-container {
+    background-color: #e7e7e700;
+    padding: 20px;
+    width: 500px;
+    margin: 0 auto; /* Add this line to center the container */
+  }
+  
+
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 200px;
   }
   

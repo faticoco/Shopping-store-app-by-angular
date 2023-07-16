@@ -10,3 +10,51 @@
     margin-right: auto;
   }
   
+
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .table td {
+    border: 1px solid #ddd;
+    background-color: #f2f2f230;
+    padding: 8px;
+  }
+  
+  .table th {
+    background-color: #f2f2f2;
+  }
+  
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f989;
+  }
+  
+  .table tbody tr:hover {
+    background-color: #c1fcff90;
+  }
+  
+  .table tfoot td {
+    font-weight: bold;
+  }
+  
+
+  
+.button {
+  /* Button styles */
+  padding: 10px 20px;
+  background-color: #03050700;
+  color: #121d19;
+  border: 2px solid #ffffff;
+  cursor: pointer;
+  font-weight: bold;
+  
+}
+
+.button:hover {
+  /* Hover effect styles */
+  background-color: #41f6ff56;
+  border: 2px solid #ffffff;
+}
+
+  

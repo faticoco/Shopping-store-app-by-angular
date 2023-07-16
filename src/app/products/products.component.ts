@@ -1,12 +1,13 @@
 import { Subscription } from 'rxjs';
-import { ShoppingCartComponent } from './../shopping-cart/shopping-cart.component';
 import { CategoryService } from 'src/app/category.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ProductService } from '../product.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from '../models/product';
 import { ShoppingCartService } from '../shopping-cart.service';
 import { first } from 'rxjs';
+import { Location } from '@angular/common';
+
 @Component({
   selector: 'app-products',
   templateUrl: './products.component.html',
@@ -20,11 +21,12 @@ export class ProductsComponent implements OnInit , OnDestroy{
    category:any;
    cart:any;
    subscription:Subscription | undefined;
-   addtocartclicked:any;
+   cartCount:number;
 
    async ngOnInit() {
    this.cart = await this.cartService.getOrCreateCartid();
    this.subscription=this.cart;
+   await this.totalItemsCount(); //init total cart items count
   }
 
   ngOnDestroy(): void {
@@ -36,7 +38,8 @@ export class ProductsComponent implements OnInit , OnDestroy{
     private service :ProductService ,
     private cat: CategoryService , 
     route:ActivatedRoute,
-    private cartService :ShoppingCartService
+    private cartService :ShoppingCartService,
+    private location: Location
     )
    {  
       this.service.getall().subscribe(products =>{
@@ -54,15 +57,45 @@ export class ProductsComponent implements OnInit , OnDestroy{
   
       });
       this.categories= this.cat.getCategories();   
+      this.cartCount=0;
    }
   
  
       AddToCart(p:Product)
       {
-        
           this.cartService.AddToCart(p);
-          this.addtocartclicked=!this.addtocartclicked;
+          
+         // window.location.reload();
+      }
+
+
+      RemovefromCart(p :Product)
+      {
+        this.cartService.RemoveFromCart(p);
+       // window.location.reload();
+       
+      }
       
+      async  totalItemsCount()
+      {
+        this.cartCount=0;
+        if (!this.cart)
+        {
+          console.log("No cart");
+        }
+        let cartid = await this.cartService.getOrCreateCartid();
+       
+        const items: any = await this.cartService.getItems(cartid).pipe(first()).toPromise();
+        
+        if (items ) 
+        {
+              for(let product in items) 
+              {
+                console.log(items[product].quantity +"is my product quan");
+                
+                this.cartCount += items[product].quantity;
+              }
+        }
       }
 
       async getQuantity(p: Product) {
@@ -82,6 +115,7 @@ export class ProductsComponent implements OnInit , OnDestroy{
       
         return 0;
       }
+
       
    }
 
